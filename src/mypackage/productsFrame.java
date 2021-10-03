@@ -22,7 +22,7 @@ public class productsFrame extends javax.swing.JFrame
     {
         try
         {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM producttable");
             productTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -451,7 +451,7 @@ public class productsFrame extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
                 PreparedStatement pst = con.prepareStatement("INSERT INTO producttable VALUES(?,?,?,?,?)");
                 pst.setInt(1, Integer.parseInt(txtProdID.getText()));
                 pst.setString(2, txtProdName.getText());
@@ -496,7 +496,7 @@ public class productsFrame extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
                 String id = txtProdID.getText();
                 String query = "DELETE FROM producttable WHERE ProdID = " + id;
                 Statement st2 = con.createStatement();
@@ -525,7 +525,7 @@ public class productsFrame extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
                 String query = "UPDATE producttable SET ProdName = '"+txtProdName.getText()+"', ProdQty = "+
                                txtProdQuantity.getText()+", ProdPrice = "+txtProdPrice.getText()+", ProdCat = '"+
                                cmbCategory.getSelectedItem().toString()+"' WHERE ProdID = "+txtProdID.getText();
@@ -555,7 +555,7 @@ public class productsFrame extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
                 String query = "SELECT * FROM producttable WHERE ProdID = " + txtProdID.getText();
                 Statement st2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 ResultSet RS = st2.executeQuery(query);

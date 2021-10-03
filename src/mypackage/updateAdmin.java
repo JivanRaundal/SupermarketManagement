@@ -188,7 +188,7 @@ public class updateAdmin extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
                 String query = "UPDATE admintable SET AdminName = '"+txtAdminName.getText()+"', AdminPass = '"+
                                txtAdminPass.getText()+"' WHERE AdminID = "+1;
                 Statement st2 = con.createStatement();
