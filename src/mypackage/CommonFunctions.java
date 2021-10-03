@@ -12,7 +12,7 @@ public class CommonFunctions
         Connection con = null;
         try
         {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
         } 
         catch (SQLException e)
         {
