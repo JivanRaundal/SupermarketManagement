@@ -23,7 +23,7 @@ public class Category extends javax.swing.JFrame
     {
         try
         {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+            con = CommonFunctions.getConnection();
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM categorytable");
             categoryTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -401,7 +401,7 @@ public class Category extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = CommonFunctions.getConnection();
                 PreparedStatement pst = con.prepareStatement("INSERT INTO categorytable VALUES(?,?,?)");
                 pst.setInt(1, Integer.parseInt(txtCatID.getText()));
                 pst.setString(2, txtCatName.getText());
@@ -449,7 +449,7 @@ public class Category extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = CommonFunctions.getConnection();
                 String id = txtCatID.getText();
                 String query = "DELETE FROM categorytable WHERE CatID = " + id;
                 Statement st2 = con.createStatement();
@@ -477,7 +477,7 @@ public class Category extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = CommonFunctions.getConnection();
                 String query = "UPDATE categorytable SET CatName = '"+txtCatName.getText()+"', CatDesc = '"+
                                txtCatDesc.getText()+"' WHERE CatID = "+txtCatID.getText();
                 Statement st2 = con.createStatement();
@@ -505,7 +505,7 @@ public class Category extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketdb","Jivan_Raundal","Jivan@123");
+                con = CommonFunctions.getConnection();
                 String query = "SELECT * FROM categorytable WHERE CatID = " + txtCatID.getText();
                 Statement st2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 ResultSet RS = st2.executeQuery(query);
