@@ -2,7 +2,6 @@
 package mypackage;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -188,7 +187,7 @@ public class updateAdmin extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+                con = CommonFunctions.getConnection();
                 String query = "UPDATE admintable SET AdminName = '"+txtAdminName.getText()+"', AdminPass = '"+
                                txtAdminPass.getText()+"' WHERE AdminID = "+1;
                 Statement st2 = con.createStatement();

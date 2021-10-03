@@ -23,7 +23,7 @@ public class Seller extends javax.swing.JFrame
     {
         try
         {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+            con = CommonFunctions.getConnection();
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM sellertable");
             sellerTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -422,7 +422,7 @@ public class Seller extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+                con = CommonFunctions.getConnection();
                 PreparedStatement pst = con.prepareStatement("INSERT INTO sellertable VALUES(?,?,?,?)");
                 pst.setInt(1, Integer.parseInt(txtSellID.getText()));
                 pst.setString(2, txtSellName.getText());
@@ -473,7 +473,7 @@ public class Seller extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+                con = CommonFunctions.getConnection();
                 String id = txtSellID.getText();
                 String query = "DELETE FROM sellertable WHERE SellID = " + id;
                 Statement st2 = con.createStatement();
@@ -501,7 +501,7 @@ public class Seller extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+                con = CommonFunctions.getConnection();
                 String query = "UPDATE sellertable SET SellName = '"+txtSellName.getText()+"', SellPass = '"+
                                txtSellPass.getText()+"', SellGender = '"+cmbSellGender.getSelectedItem().toString()+
                                "' WHERE SellID = "+txtSellID.getText();
@@ -530,7 +530,7 @@ public class Seller extends javax.swing.JFrame
         {
             try
             {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermarketmanagementdb","codebind","prasadc1234");
+                con = CommonFunctions.getConnection();
                 String query = "SELECT * FROM sellertable WHERE SellID = " + txtSellID.getText();
                 Statement st2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 ResultSet RS = st2.executeQuery(query);
