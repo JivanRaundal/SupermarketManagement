@@ -65,6 +65,13 @@ public class updateAdmin extends javax.swing.JFrame
 
         txtAdminName.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         txtAdminName.setForeground(new java.awt.Color(255, 102, 0));
+        txtAdminName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtAdminNameKeyTyped(evt);
+            }
+        });
 
         lbl2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lbl2.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,7 +96,7 @@ public class updateAdmin extends javax.swing.JFrame
         btnclear.setBackground(new java.awt.Color(255, 255, 255));
         btnclear.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btnclear.setForeground(new java.awt.Color(255, 102, 0));
-        btnclear.setText("Clear");
+        btnclear.setText("CLEAR");
         btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener()
         {
@@ -168,7 +175,8 @@ public class updateAdmin extends javax.swing.JFrame
 
     private void lblcloseMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblcloseMouseClicked
     {//GEN-HEADEREND:event_lblcloseMouseClicked
-        System.exit(0);
+        new login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblcloseMouseClicked
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnclearActionPerformed
@@ -203,7 +211,13 @@ public class updateAdmin extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnupdateActionPerformed
 
+    private void txtAdminNameKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtAdminNameKeyTyped
+    {//GEN-HEADEREND:event_txtAdminNameKeyTyped
+        CommonFunctions.alphabetValidation(evt);
+    }//GEN-LAST:event_txtAdminNameKeyTyped
 
+
+    
     public static void main(String args[])
     {
         /* Set the Nimbus look and feel */
@@ -236,15 +250,15 @@ public class updateAdmin extends javax.swing.JFrame
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+   
+        /*java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
             {
                 new updateAdmin().setVisible(true);
             }
-        });
-    }
+        }); */
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnclear;

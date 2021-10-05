@@ -17,6 +17,8 @@ public class Seller extends javax.swing.JFrame
     {
         initComponents();
         selectSeller();
+        
+        CommonFunctions.addDateTime(lblDate);
     }
 
     public void selectSeller()
@@ -64,6 +66,7 @@ public class Seller extends javax.swing.JFrame
         lblproducts = new javax.swing.JLabel();
         lblcategory = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -85,6 +88,14 @@ public class Seller extends javax.swing.JFrame
 
         txtSellID.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         txtSellID.setForeground(new java.awt.Color(255, 102, 0));
+        txtSellID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        txtSellID.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtSellIDKeyTyped(evt);
+            }
+        });
 
         lbl2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lbl2.setForeground(new java.awt.Color(255, 102, 0));
@@ -101,9 +112,18 @@ public class Seller extends javax.swing.JFrame
 
         txtSellName.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         txtSellName.setForeground(new java.awt.Color(255, 102, 0));
+        txtSellName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        txtSellName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtSellNameKeyTyped(evt);
+            }
+        });
 
         txtSellPass.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         txtSellPass.setForeground(new java.awt.Color(255, 102, 0));
+        txtSellPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         cmbSellGender.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         cmbSellGender.setForeground(new java.awt.Color(255, 102, 0));
@@ -359,6 +379,10 @@ public class Seller extends javax.swing.JFrame
             }
         });
 
+        lblDate.setBackground(new java.awt.Color(255, 102, 0));
+        lblDate.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -374,14 +398,17 @@ public class Seller extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addComponent(subPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblclose, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addComponent(lblclose)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblclose)
+                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -560,26 +587,42 @@ public class Seller extends javax.swing.JFrame
 
     private void lblcloseMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblcloseMouseClicked
     {//GEN-HEADEREND:event_lblcloseMouseClicked
+        CommonFunctions.stopThread();
         System.exit(0);
     }//GEN-LAST:event_lblcloseMouseClicked
 
     private void lblproductsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblproductsMouseClicked
     {//GEN-HEADEREND:event_lblproductsMouseClicked
+        CommonFunctions.stopThread();
         new productsFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblproductsMouseClicked
 
     private void lblcategoryMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblcategoryMouseClicked
     {//GEN-HEADEREND:event_lblcategoryMouseClicked
+        CommonFunctions.stopThread();
         new Category().setVisible(true);
         this.dispose();
+
     }//GEN-LAST:event_lblcategoryMouseClicked
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblLogoutMouseClicked
     {//GEN-HEADEREND:event_lblLogoutMouseClicked
-        //new Login().setVisible(true);
+        CommonFunctions.stopThread();
         this.dispose();
+        new login().setVisible(true);
+
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void txtSellIDKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSellIDKeyTyped
+    {//GEN-HEADEREND:event_txtSellIDKeyTyped
+        CommonFunctions.integerValidation(evt);
+    }//GEN-LAST:event_txtSellIDKeyTyped
+
+    private void txtSellNameKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSellNameKeyTyped
+    {//GEN-HEADEREND:event_txtSellNameKeyTyped
+        CommonFunctions.alphabetValidation(evt);
+    }//GEN-LAST:event_txtSellNameKeyTyped
 
 
     public static void main(String args[])
@@ -615,13 +658,13 @@ public class Seller extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        /*java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
             {
                 new Seller().setVisible(true);
             }
-        });
+        }); */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -636,6 +679,7 @@ public class Seller extends javax.swing.JFrame
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblcategory;
     private javax.swing.JLabel lblclose;
